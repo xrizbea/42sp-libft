@@ -6,7 +6,7 @@
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:55:07 by beatriza          #+#    #+#             */
-/*   Updated: 2024/10/29 14:20:16 by beatriza         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:36:42 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ void	*ft_memset(void *dest, int c, size_t len)
 		counter++;
 	}
 	return (memory);
-
 }

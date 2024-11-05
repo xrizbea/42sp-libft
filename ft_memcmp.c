@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:06:18 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/04 17:24:17 by beatriza         ###   ########.fr       */
+/*   Created: 2024/11/04 13:08:16 by beatriza          #+#    #+#             */
+/*   Updated: 2024/11/04 13:10:03 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-int	ft_isalnum(int c)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	return (
-		(c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')
-		|| (c >= '0' && c <= '9')
-	);
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+	size_t			i;
+
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (ptr1[i] != ptr2[i])
+			return ((int)ptr1[i] - ptr2[i]);
+		i++;
+	}
+	return (0);
 }
