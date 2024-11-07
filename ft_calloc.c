@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:29:19 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/07 16:55:37 by beatriza         ###   ########.fr       */
+/*   Created: 2024/11/07 16:56:31 by beatriza          #+#    #+#             */
+/*   Updated: 2024/11/07 17:23:49 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char		*new_arr;
-	int			i;
-	int			size;
+	void	*pnt;
+	size_t	i;
 
 	i = 0;
-	size = ft_strlen(s);
-	new_arr = (char *) malloc((size + 1) * sizeof(char));
-	if (!new_arr)
+	if (nmemb == 0 || size == 0)
+		return (malloc(1));
+	if (nmemb > (size_t) - 1 /size)
 		return (NULL);
-	ft_memcpy((void *) new_arr, s, size);
-	new_arr[size] = '\0';
-	return (new_arr);
+	pnt = malloc(nmemb * size);
+	if (!pnt)
+		return (NULL);
+	while (i < nmemb * size)
+	{
+		((unsigned char *) pnt)[i] = '\0';
+		i++;
+	}
+	return (pnt);
 }

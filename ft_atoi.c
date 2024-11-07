@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:29:19 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/07 16:55:37 by beatriza         ###   ########.fr       */
+/*   Created: 2024/11/07 15:17:03 by beatriza          #+#    #+#             */
+/*   Updated: 2024/11/07 17:21:21 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+int	ft_atoi(const char *nptr)
 {
-	char		*new_arr;
-	int			i;
-	int			size;
+	int	sign;
+	int	result;
 
-	i = 0;
-	size = ft_strlen(s);
-	new_arr = (char *) malloc((size + 1) * sizeof(char));
-	if (!new_arr)
-		return (NULL);
-	ft_memcpy((void *) new_arr, s, size);
-	new_arr[size] = '\0';
-	return (new_arr);
+	sign = 1;
+	result = 0;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == '')
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
+	{
+		if (*nptr == '-')
+		sign = -1;
+		nptr++;
+	}
+	while (ft_isdigit(*nptr))
+	{
+		result = result * 10 + (*nptr - '0');
+		nptr++;
+	}
+	return (sign * result);
 }
