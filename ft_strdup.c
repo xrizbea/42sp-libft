@@ -6,24 +6,26 @@
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:29:19 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/07 16:55:37 by beatriza         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:40:45 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char		*ft_strdup(const char *s1)
 {
-	char		*new_arr;
-	int			i;
-	int			size;
+	char	*str;
+	size_t	i;
 
 	i = 0;
-	size = ft_strlen(s);
-	new_arr = (char *) malloc((size + 1) * sizeof(char));
-	if (!new_arr)
+	str = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
+	if (str == NULL)
 		return (NULL);
-	ft_memcpy((void *) new_arr, s, size);
-	new_arr[size] = '\0';
-	return (new_arr);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
