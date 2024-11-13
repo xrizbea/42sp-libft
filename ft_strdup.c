@@ -6,13 +6,13 @@
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:29:19 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/07 18:40:45 by beatriza         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:02:34 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*str;
 	size_t	i;

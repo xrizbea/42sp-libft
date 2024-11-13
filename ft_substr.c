@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:56:31 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/12 18:19:18 by beatriza         ###   ########.fr       */
+/*   Created: 2024/11/12 12:40:07 by beatriza          #+#    #+#             */
+/*   Updated: 2024/11/13 14:40:52 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*pnt;
-	size_t	i;
+	char			*new_str;
+	unsigned int	s_len;
+	unsigned int	max_len;
 
-	i = 0;
-	if (nmemb == 0 || size == 0)
-		return (malloc(1));
-	if (nmemb > (size_t) - 1 / size)
+	if (!s)
 		return (NULL);
-	pnt = malloc(nmemb * size);
-	if (!pnt)
+	s_len = ft_strlen(s);
+	if (start > s_len)
+		return (ft_strdup(""));
+	if (s_len > start)
+	max_len = s_len - start;
+	else
+	max_len = 0;
+	if (max_len > len)
+	max_len = len;
+	new_str = (char *)malloc((max_len + 1) * sizeof(char));
+	if (!new_str)
 		return (NULL);
-	while (i < nmemb * size)
-	{
-		((unsigned char *) pnt)[i] = '\0';
-		i++;
-	}
-	return (pnt);
+	ft_strlcpy(new_str, s + start, max_len +1);
+	return (new_str);
 }

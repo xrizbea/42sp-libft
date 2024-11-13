@@ -6,7 +6,7 @@
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:28:25 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/04 18:00:57 by beatriza         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:54:41 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 	size_t	result;
 
+	if (src == NULL)
+		return (ft_strlen(dst) + ft_strlen(src));
 	i = 0;
 	while (dst[i] != '\0')
 	{
