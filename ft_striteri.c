@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 15:17:03 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/14 11:14:57 by beatriza         ###   ########.fr       */
+/*   Created: 2024/11/14 11:20:43 by beatriza          #+#    #+#             */
+/*   Updated: 2024/11/14 13:08:14 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	sign;
-	int	result;
+	unsigned int	i;
 
-	sign = 1;
-	result = 0;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (*s != '\0')
 	{
-		if (*nptr == '-')
-		sign = -1;
-		nptr++;
+		f(i, s);
+		s++;
+		i++;
 	}
-	while (ft_isdigit(*nptr))
-	{
-		result = result * 10 + (*nptr - '0');
-		nptr++;
-	}
-	return (sign * result);
 }

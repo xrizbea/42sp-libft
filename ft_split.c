@@ -6,7 +6,7 @@
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:35:31 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/13 14:36:38 by beatriza         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:48:35 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static char	**ft_free_split(char **split, int count);
 char	**ft_split(char const *str, char c)
 {
 	char	**dest;
-	int	i;
+	int		i;
 
-	if	(!str)
+	if (!str)
 		return (NULL);
 	i = 0;
 	dest = (char **)malloc(sizeof(char *) * (count_words(str, c) + 1));
@@ -37,11 +37,11 @@ char	**ft_split(char const *str, char c)
 			if (dest[i - 1] == NULL)
 				return (ft_free_split(dest, i));
 			while (*str && *str != c)
-				str++;   
+				str++;
 		}
 	}
-	dest[i] = NULL; 
-	return (dest);  
+	dest[i] = NULL;
+	return (dest);
 }
 
 static int	count_words(char const *s, char c)
@@ -52,11 +52,11 @@ static int	count_words(char const *s, char c)
 
 	count = 0;
 	i = 0;
-	while (s[i])
+	while (s[i] != '\0')
 	{
 		while (s[i] == c)
 			i++;
-		if (s[i])
+		if (s[i] != '\0')
 		count++;
 		while (s[i] != c && s[i])
 			i++;
@@ -64,11 +64,10 @@ static int	count_words(char const *s, char c)
 	return (count);
 }
 
-
 static char	*ft_create_word(char const *str, char c)
 {
 	char	*dest;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i] && str[i] != c)
@@ -99,4 +98,3 @@ static char	**ft_free_split(char **split, int count)
 	free(split);
 	return (NULL);
 }
-

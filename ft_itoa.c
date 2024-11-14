@@ -6,11 +6,13 @@
 /*   By: beatriza <beatriza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:25:51 by beatriza          #+#    #+#             */
-/*   Updated: 2024/11/13 15:14:27 by beatriza         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:42:24 by beatriza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_num_len(int n)
+#include "libft.h"
+
+static int	ft_num_len(int n);
 
 char	*ft_itoa(int n)
 {
@@ -41,26 +43,17 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-
 static int	ft_num_len(int n)
 {
-	unsigned int	num;
-	int				i;
+	int	len;
 
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while	(n != 0)
 	{
-		i = 1;
-		num = -n;
+		n /= 10;
+		len++;
 	}
-	else
-	{
-		num = n;
-	}
-		num /= 10;
-		i++;
-	}
-	return (i);
+	return (len);
 }
